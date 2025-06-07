@@ -52,7 +52,7 @@ return{
  
 classifyTask(task: string): Observable<{category: string}>{
   return this.http.post<{category:string}>(
-    '${environment.apiUrl}/api/classify-task', {task},this.getAuthHeaders());
+    '/api/classify-task', {task},this.getAuthHeaders());
 }
 }
 
