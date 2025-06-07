@@ -28,7 +28,7 @@ const axios = require('axios');
 app.use(cors());
 app.use(bodyParser.json());
 const clientDistPath = path.join(__dirname,'todo-client' ,'dist', 'todo-client','browser');
-app.use(express.static(clientDistPath));
+// app.use(express.static(clientDistPath));
 const openaiApiKey = process.env.OPENAI_API_KEY;
 
 
@@ -76,6 +76,8 @@ app.post('/login', (req, res) => {
   });
 });
 
+
+
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1]; 
@@ -107,7 +109,7 @@ app.get('/todos', authenticateToken, (req, res) => {
   });
 });
 
-
+app.use(express.static(clientDistPath));
 // app.get('/todos', (req, res) => {
 //     db.all(`SELECT * FROM todos`, [], (err, rows) => {
 //         if (err) {
