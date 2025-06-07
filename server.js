@@ -183,7 +183,7 @@ db.run(`DELETE FROM todos WHERE id = ?`, [taskID], function(err) {
 //קישור ל openAI
 app.post(`/api/classify-task`, async (req, res) => {
   const taskText = req.body.task;
-
+console.log(process.env.OPENAI_API_KEY);
   if (!taskText) {
     return res.status(400).json({ error: 'Task text is required' });
   }
@@ -202,6 +202,7 @@ app.post(`/api/classify-task`, async (req, res) => {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+          
         }
       }
     );
