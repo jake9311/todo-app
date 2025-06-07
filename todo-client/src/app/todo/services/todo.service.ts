@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Todo } from '../models/todo.model';
 import { AuthService } from './auth.service';
+import { environment } from '../../../environments/environment';
 
 
 
@@ -12,7 +13,8 @@ import { AuthService } from './auth.service';
 })
 export class TodoService {
   // private apiUrl = 'http://localhost:3000/todos';
-  private apiUrl='/todos';
+  // private apiUrl='/todos';
+  private apiUrl = `${environment.apiUrl}/todos`;
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -50,7 +52,7 @@ return{
  
 classifyTask(task: string): Observable<{category: string}>{
   return this.http.post<{category:string}>(
-    '/api/classify-task', {task},this.getAuthHeaders());
+    '${environment.apiUrl}/api/classify-task', {task},this.getAuthHeaders());
 }
 }
 

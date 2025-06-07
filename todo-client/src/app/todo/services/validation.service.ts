@@ -13,7 +13,7 @@ export class ValidationService {
     }
 
     checkPassword(input: string):boolean {
-       const regex = /^[^\s]{7,}$/;
+       const regex = /^[^\s]{6,}$/;
         return regex.test(input);
     }
     doPasswordsMatch(password: string, confirmPassword: string):boolean {
