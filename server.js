@@ -1,6 +1,7 @@
 
-const path = require('path');
+
 const express = require('express');
+const path = require('path');
 require('dotenv').config();
 const sqlite3= require('sqlite3').verbose();
 const bodyParser = require('body-parser');
@@ -24,7 +25,7 @@ const axios = require('axios');
 
 app.use(cors());
 app.use(bodyParser.json());
-const clientDistPath = path.join('dist',__dirname, 'dist');
+const clientDistPath = path.join(__dirname, 'todo-client' ,'dist', 'todo-client');
 app.use(express.static(clientDistPath));
 const openaiApiKey = process.env.OPENAI_API_KEY;
 
