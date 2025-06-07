@@ -4,18 +4,15 @@ import { Observable } from 'rxjs';
 import { Todo } from '../models/todo.model';
 import { AuthService } from './auth.service';
 
-// export interface Todo {
-//   id: number;
-//   task: string;
-//   completed: boolean;
-// }
+
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
-  private apiUrl = 'http://localhost:3000/todos';
+  // private apiUrl = 'http://localhost:3000/todos';
+  private apiUrl='/todos';
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -45,10 +42,15 @@ return{
   deleteTodo(id: number): Observable<Todo> {
     return this.http.delete<Todo>(`${this.apiUrl}/${id}`,this.getAuthHeaders());
   }
+// classifyTask(task: string): Observable<{category: string}>{
+//   return this.http.post<{category:string}>(
+//     'http://localhost:3000/api/classify-task', {task});}
+  
+// }
+ 
 classifyTask(task: string): Observable<{category: string}>{
   return this.http.post<{category:string}>(
-    'http://localhost:3000/api/classify-task', {task});}
-  
+    '/api/classify-task', {task},this.getAuthHeaders());
 }
-
+}
 
