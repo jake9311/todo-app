@@ -212,7 +212,7 @@ app.post(`/api/classify-task`, async (req, res) => {
 })
 
 app.get(/.*/, (req, res) => {
-  res.sendFile(path.join(clientDistPath, 'index.html'));
+  res.sendFile(path.join(clientDistPath, 'index.csr.html'));
 });
 
 
