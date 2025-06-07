@@ -1,0 +1,86 @@
+h2{
+    text-align: center;
+    color: blue;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.add-task{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+ul{
+    list-style-type: circle,marker;
+    padding: 0px;
+    margin: 20px auto;
+    max-width: 600px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.todo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #6b5454;
+}
+
+.task{
+    flex-grow: 1;
+    padding-right: 18px;
+}
+
+.actions{
+    display: flex;
+    gap: 10px;
+    margin-left: 40px;
+}
+
+.complete, .delete{
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.complete{
+    background-color: #139718;
+    color: white;
+}
+.complete:hover{
+    background-color: #0d6e0d;
+}
+.complete:disabled{
+    background-color: #7c7676;
+    cursor: default;
+}
+
+.delete{
+    background-color: #b31d12;
+    color: white;
+}
+.delete:hover{
+    background-color: #a11313;
+}
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.logout-button {
+  background-color: red; 
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #671414;
+}

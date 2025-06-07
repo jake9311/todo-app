@@ -1,0 +1,16 @@
+<div class= 'container'>
+<h2>Register</h2>
+<div *ngIf="errorMessage" style="color: red;">{{errorMessage}}</div>
+<input  [(ngModel)]="username" placeholder="Username"   />
+<input  [(ngModel)]="password" type="password" placeholder="Password" />
+<input  [(ngModel)]="confirmPassword" type="password" placeholder="Confirm Password" />
+<button (click)="onRegister()">Register</button>
+
+
+
+
+<p>
+    Already have an account?
+    <a [routerLink]="['/login']" style="cursor: pointer; color: blue; text-decoration: underline;">Login here</a>
+</p>
+</div>

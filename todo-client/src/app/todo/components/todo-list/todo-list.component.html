@@ -1,0 +1,29 @@
+<h2>{{username}}`s To-Do List</h2>
+
+<div class="toolbar">
+  <button class="logout-button" (click)="logout()">Logout</button>
+</div>
+
+
+<div class="add-task">
+<input [(ngModel)]="newTask" placeholder="Add new task" />
+<button (click)="addTask()">Add</button>
+<p *ngIf="errorMessage" style="color: red; font-size: 14px;">
+  {{ errorMessage }}
+</p>
+</div>
+<ul>
+  <li *ngFor="let todo of todos" class="todo">
+    <i class="{{ getCategoryIcon(todo.task) }}" ></i>
+    <span class="task" [style.text-decoration]="todo.completed ? 'line-through' : 'none'">
+      {{ getTaskTextOnly(todo.task) }}
+    </span>
+    <div class="actions" >
+    <button class="complete" (click)="completeTask(todo.id)" [disabled]="todo.completed">Complete</button>
+    <button  class="delete" (click)="deleteTask(todo.id)">Delete</button>
+   </div>
+  </li>
+</ul>
+
+
+
