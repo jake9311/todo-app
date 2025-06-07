@@ -13,7 +13,7 @@ export class ValidationService {
     }
 
     checkPassword(input: string):boolean {
-        const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+       const regex = /^[^\s]{7,}$/;
         return regex.test(input);
     }
     doPasswordsMatch(password: string, confirmPassword: string):boolean {
