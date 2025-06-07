@@ -21,13 +21,16 @@ const axios = require('axios');
 //   )
 // `);
 
-
+// app.use((req, res, next) => {
+//   console.log(`${req.method} ${req.path}`);
+// })
 
 app.use(cors());
 app.use(bodyParser.json());
-const clientDistPath = path.join(__dirname, 'todo-client' ,'dist', 'todo-client');
+const clientDistPath = path.join(__dirname,'todo-client' ,'dist', 'todo-client','browser');
 app.use(express.static(clientDistPath));
 const openaiApiKey = process.env.OPENAI_API_KEY;
+
 
 
 
