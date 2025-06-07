@@ -1,4 +1,5 @@
 
+const path = require('path');
 const express = require('express');
 require('dotenv').config();
 const sqlite3= require('sqlite3').verbose();
@@ -23,6 +24,8 @@ const axios = require('axios');
 
 app.use(cors());
 app.use(bodyParser.json());
+const clientDistPath = path.join('dist',__dirname, 'dist');
+app.use(express.static(clientDistPath));
 const openaiApiKey = process.env.OPENAI_API_KEY;
 
 
@@ -170,12 +173,6 @@ db.run(`DELETE FROM todos WHERE id = ?`, [taskID], function(err) {
 
 
 
-const port= process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-    return
-});
-
 
 //קישור ל openAI
 app.post(`/api/classify-task`, async (req, res) => {
@@ -210,5 +207,14 @@ app.post(`/api/classify-task`, async (req, res) => {
   }
 })
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(clientDistPath, 'index.html'));
+});
 
+
+const port= process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+    return
+});
 
