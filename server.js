@@ -13,22 +13,10 @@ const db = new sqlite3.Database('database.db');
 const SECRET_KEY=`sec1993`;
 const axios = require('axios');
 
-// db.run(`
-//   CREATE TABLE IF NOT EXISTS users (
-//     id INTEGER PRIMARY KEY AUTOINCREMENT,
-//     username TEXT UNIQUE,
-//     password TEXT
-//   )
-// `);
-
-// app.use((req, res, next) => {
-//   console.log(`${req.method} ${req.path}`);
-// })
 
 app.use(cors());
 app.use(bodyParser.json());
 const clientDistPath = path.join(__dirname,'todo-client' ,'dist', 'todo-client','browser');
-// app.use(express.static(clientDistPath));
 const openaiApiKey = process.env.OPENAI_API_KEY;
 
 
@@ -110,16 +98,6 @@ app.get('/todos', authenticateToken, (req, res) => {
 });
 
 app.use(express.static(clientDistPath));
-// app.get('/todos', (req, res) => {
-//     db.all(`SELECT * FROM todos`, [], (err, rows) => {
-//         if (err) {
-//             res.status(500).json({ error: err.message });
-//             return;
-//         }
-//         res.json(rows);
-//     });
- 
-// });
 
 
 
@@ -138,22 +116,7 @@ app.post('/todos', authenticateToken, (req, res) => {
   });
 });
 
-// app.post('/todos', (req, res) => {
-//     const {task} = req.body;
-//     if (!task) {
-//         res.status(400).json({ error: 'Task is required' });
-//         return;
-//     }
 
-// db.run(`INSERT INTO todos (task,completed) VALUES (?,0)` , [task], function(err) {
-//     if (err){
-//         res.status(500).json({error: err.message});
-//         return;
-//     }
-//     res.json({id: this.lastID, task: task, completed: 0});
-// })
-
-// });
 
 app.put('/todos/:id', (req, res) => {
     const taskID = req.params.id;
