@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://jake-todo-app.onrender.com'
+  apiUrl: 'https://jake-todo-app.onrender.com/api'
 };
