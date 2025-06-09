@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router, RouterModule } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ValidationService } from '../../services/validation.service';
+import { environment } from '../../../../environments/environment';
 
 
 
@@ -20,6 +21,7 @@ username = '';
 password = '';
 confirmPassword = '';
 errorMessage = '';
+private apiUrl = `${environment.apiUrl}/register`;
 
 constructor(private authService: AuthService, private router: Router, private http: HttpClient, private validationService: ValidationService) {}
 
@@ -46,7 +48,7 @@ if (!this.validationService.doPasswordsMatch(password, confirmPassword)) {
 }
 
  
-  this.http.post<{id: number; username: string}>('http://localhost:3000/register', { 
+  this.http.post<{id: number; username: string}>(`${this.apiUrl}`,{ 
     username: this.username, password: this.password }).subscribe({
     next: () => {
       this.authService.login(this.username, this.password).subscribe({
